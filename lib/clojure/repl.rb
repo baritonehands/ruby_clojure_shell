@@ -71,7 +71,8 @@ module Clojure
       end
 
       def expression
-        "(.#{Utils.camel_case('get_'+@name)} #{@varname})"
+        method = @name.end_with?("?") ? "is_#{@name[0..-2]}" : "get_#{@name}"
+        "(.#{Utils.camel_case(method)} #{@varname})"
       end
     end
 
@@ -113,7 +114,7 @@ module Clojure
       end
 
       def inspect
-        "<Namespace #{@ns}>"
+        "<Clojure::Repl::NamespaceAlias #{@ns}>"
       end
     end
 
