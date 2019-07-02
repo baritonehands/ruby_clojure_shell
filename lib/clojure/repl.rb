@@ -14,7 +14,7 @@ module Clojure
       end
 
       def expression
-        raise NotImplementedError
+        ::Kernel.raise ::NotImplementedError
       end
 
       def to_edn
@@ -102,7 +102,7 @@ module Clojure
       end
 
       def []=(*)
-        raise IndexError
+        ::Kernel.raise ::NotImplementedError
       end
 
       def method_missing(symbol, *args)
